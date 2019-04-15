@@ -21,14 +21,12 @@ cfg.PATH.MODEL_SAVE_DIR = osp.abspath(osp.join(os.getcwd(), 'checkpoints'))
 
 # TRAIN
 cfg.TRAIN = edict()
-cfg.TRAIN.BATCH_SIZE = 32
+cfg.TRAIN.BATCH_SIZE = 128
 cfg.TRAIN.LEARNING_RATE = 0.0001
 cfg.TRAIN.LR_DECAY_STEPS = 10000
-cfg.TRAIN.LR_DECAY_RATE = 0.9
+cfg.TRAIN.LR_DECAY_RATE = 0.98
 cfg.TRAIN.EPOCHS = 50000
-cfg.TRAIN.DISPLAY_STEP = 100
-cfg.TRAIN.GPU_MEMORY_FRACTION = 0.5
-cfg.TRAIN.TF_ALLOW_GROWTH = True
+
 
 # VALID
 cfg.VALID = edict()

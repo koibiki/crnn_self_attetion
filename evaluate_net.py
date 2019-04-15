@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import os
-from dataset.dataset import DataProvider
+from dataset.data_provider import DataProvider
 from loss.ctc_loss import calculate_ctc_loss, calculate_edit_distance
 from net.crnn import CrnnNet
 from config import cfg
@@ -66,7 +66,7 @@ def model_fn(features, labels, mode, params):
         tf.summary.scalar('sequence_dist', tf.reduce_mean(edit_distance))
 
         if mode == tf.estimator.ModeKeys.TRAIN:
-            optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
+            optimizer = tf.train.AdamOptimizer(learning_rate=0.00001)
             train_op = optimizer.minimize(ctc_loss, global_step=global_step)
             return tf.estimator.EstimatorSpec(
                 mode, loss=ctc_loss, train_op=train_op)
@@ -100,7 +100,7 @@ run_config = tf.estimator.RunConfig(
 
 classifier = tf.estimator.Estimator(model_fn=model_fn, config=run_config)
 
-imread = cv2.imread("./sample/004.png", cv2.IMREAD_GRAYSCALE)
+imread = cv2.imread("./sample/1_bridleway_9530.jpg", cv2.IMREAD_GRAYSCALE)
 
 imread = resize_image(imread, 100, 32) / 255.
 
