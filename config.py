@@ -4,7 +4,7 @@ import os.path as osp
 
 # Supported characters
 CHAR_VECTOR = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-'_&.!?,\""
-# CHAR_VECTOR = "0123456789"
+
 
 cfg = edict()
 # Number of classes
